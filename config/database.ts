@@ -3,14 +3,19 @@ module.exports = ({ env }) => ({
   connection: {
     client: 'postgres',
     connection: {
-      host: env('PGHOST', env('DATABASE_HOST')),         // Ex: "railway_private_domain" ou similar
-      port: env.int('PGPORT', 5432),                       // Geralmente 5432
-      database: env('POSTGRES_DB', env('DATABASE_NAME')),  // Ex: "railway"
-      user: env('POSTGRES_USER', env('DATABASE_USERNAME')), // Ex: "postgres"
-      password: env('POSTGRES_PASSWORD', env('DATABASE_PASSWORD')), // Senha conforme Railway
-      schema: env('DATABASE_SCHEMA', 'public'),          // Geralmente "public"
+      // Usa o domínio privado fornecido pelo Railway (ou PGHOST como fallback)
+      host: env('RAILWAY_PRIVATE_DOMAIN', env('PGHOST')),
+      // Define a porta (geralmente 5432)
+      port: env.int('PGPORT', 5432),
+      // Define o nome do banco de dados
+      database: env('PGDATABASE', env('POSTGRES_DB')),
+      // Define o usuário do banco de dados
+      user: env('PGUSER', env('POSTGRES_USER')),
+      // Define a senha do banco de dados
+      password: env('PGPASSWORD', env('POSTGRES_PASSWORD')),
+      // Configuração de SSL (necessária em muitos casos no Railway)
       ssl: {
-        rejectUnauthorized: false,                       // Necessário se o Railway exigir SSL
+        rejectUnauthorized: false,
       },
     },
     debug: false,
