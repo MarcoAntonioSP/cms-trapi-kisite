@@ -48,11 +48,11 @@
         "shared.slider"
       ]
     },
-    "author": {
+    "authors": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "oneToMany",
       "target": "api::author.author",
-      "inversedBy": "articles"
+      "mappedBy": "article"
     }
   }
 }
