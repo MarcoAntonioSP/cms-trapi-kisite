@@ -16,6 +16,7 @@
     "@strapi/plugin-cloud": "5.9.0",
     "@strapi/plugin-users-permissions": "5.9.0",
     "@strapi/strapi": "5.9.0",
+    "@strapi/utils": "^5.9.0",
     "better-sqlite3": "11.3.0",
     "fs-extra": "^10.0.0",
     "glob": "^11.0.1",
